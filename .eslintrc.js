@@ -2,6 +2,7 @@ module.exports = {
   env: {
     es2021: true,
     node: true,
+    jest: true,
   },
   extends: [
     'airbnb-base',
@@ -13,9 +14,15 @@ module.exports = {
   },
   plugins: [
     '@typescript-eslint',
+    'jest',
   ],
   rules: {
     'import/prefer-default-export': 'off',
     semi: ['error', 'never'],
+    'jest/no-disabled-tests': 'warn',
+    'jest/no-focused-tests': 'error',
+    'jest/no-identical-title': 'error',
+    'jest/prefer-to-have-length': 'warn',
+    'jest/valid-expect': 'error',
   },
 }
