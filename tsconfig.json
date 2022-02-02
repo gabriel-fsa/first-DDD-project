@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "ouDir": "./dist",
+    "foceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skpLibCheck": true
+  }
+}
