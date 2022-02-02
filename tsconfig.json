@@ -2,9 +2,9 @@
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
-    "ouDir": "./dist",
-    "foceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skpLibCheck": true
+    "skipLibCheck": true
   }
 }
