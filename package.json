@@ -1,0 +1,8 @@
+{
+  "name": "first-DDD-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/gabriel-fsa/first-DDD-project.git",
+  "author": "Gabriel <gabriel_fsa@live.com>",
+  "license": "MIT"
+}
