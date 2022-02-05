@@ -6,6 +6,7 @@ module.exports = {
   },
   extends: [
     'airbnb-base',
+    'airbnb-typescript',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -18,6 +19,7 @@ module.exports = {
   ],
   rules: {
     'import/prefer-default-export': 'off',
+    'class-methods-use-this': 'off',
     semi: ['error', 'never'],
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
