@@ -1,7 +1,5 @@
-import { InvalidParamError } from '../errors/invalid-params-erros'
-import { MissingParamError } from '../errors/missing-params-erros'
-import { ServerError } from '../errors/server-error'
-import { EmailValidator } from '../protocols/email-validator'
+import { InvalidParamError, MissingParamError, ServerError } from '../errors'
+import { EmailValidator } from '../protocols'
 import { SignUpController } from './signup'
 
 interface TypeSut {
