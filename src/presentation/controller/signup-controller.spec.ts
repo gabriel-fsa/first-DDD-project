@@ -89,6 +89,21 @@ describe('signup Controller', () => {
     expect(responseHttp.body).toEqual(new MissingParamError('passwordConfirmation'))
   })
 
+  it('should return 400 if password and passwordConfirmation is diferent', async () => {
+    const { sut } = makeSut()
+    const requestHttp = {
+      body: {
+        name: 'any_name',
+        email: 'any_email@mail.com',
+        password: 'any_password',
+        passwordConfirmation: 'different_password',
+      },
+    }
+    const responseHttp = await sut.handle(requestHttp)
+    expect(responseHttp.statusCode).toBe(400)
+    expect(responseHttp.body).toEqual(new InvalidParamError('password and passwordConfirmation is diferent'))
+  })
+
   it('should return 400 if an invalid email is provided', async () => {
     const { sut, emailValidatorStub } = makeSut()
     jest.spyOn(emailValidatorStub, 'isValid').mockReturnValueOnce(false)
