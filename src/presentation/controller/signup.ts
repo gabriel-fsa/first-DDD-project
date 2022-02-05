@@ -1,5 +1,5 @@
 import { MissingParamError } from '../errors/missing-params-erros'
-import { badRequest } from '../helper/http-helper'
+import { badRequest, ok } from '../helper/http-helper'
 import { HttpRequest, HttpResponse } from '../protocols/http'
 
 export class SignUpController {
@@ -11,9 +11,6 @@ export class SignUpController {
         return Promise.resolve(badRequest(new MissingParamError(param)))
       }
     }
-    return Promise.resolve({
-      statusCode: 200,
-      body: 'No errors',
-    })
+    return Promise.resolve(ok('No errors'))
   }
 }
