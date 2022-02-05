@@ -16,6 +16,11 @@ export class SignUpController implements Controller {
         return Promise.resolve(badRequest(new MissingParamError(param)))
       }
     }
+    const { password, passwordConfirmation } = request.body
+    const isPasswordsDifferents = password !== passwordConfirmation
+    if (isPasswordsDifferents) {
+      return Promise.resolve(badRequest(new InvalidParamError('password and passwordConfirmation is diferent')))
+    }
     const isValid = this.emailValidator.isValid(request.body.email)
     if (!isValid) {
       return Promise.resolve(badRequest(new InvalidParamError('email')))
