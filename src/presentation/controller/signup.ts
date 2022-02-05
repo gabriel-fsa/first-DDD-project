@@ -9,7 +9,7 @@ export class SignUpController implements Controller {
   constructor(private readonly emailValidator: EmailValidator) {}
 
   async handle(request:HttpRequest): Promise<HttpResponse> {
-    const requiredParams = ['name', 'email', 'password']
+    const requiredParams = ['name', 'email', 'password', 'passwordConfirmation']
     // eslint-disable-next-line no-restricted-syntax
     for (const param of requiredParams) {
       if (!request.body[param]) {
