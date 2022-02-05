@@ -1,4 +1,5 @@
 import { MissingParamError } from '../errors/missing-params-erros'
+import { badRequest } from '../helper/http-helper'
 import { HttpRequest, HttpResponse } from '../protocols/http'
 
 export class SignUpController {
@@ -7,10 +8,7 @@ export class SignUpController {
     // eslint-disable-next-line no-restricted-syntax
     for (const param of requiredParams) {
       if (!request.body[param]) {
-        return Promise.resolve({
-          statusCode: 400,
-          body: new MissingParamError(param),
-        })
+        return Promise.resolve(badRequest(new MissingParamError(param)))
       }
     }
     return Promise.resolve({
