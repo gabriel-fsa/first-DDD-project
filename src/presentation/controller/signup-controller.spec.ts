@@ -1,6 +1,20 @@
 import { SignUpController } from './signup'
 
 describe('signup Controller', () => {
+  it('should return 200 all data is provided', async () => {
+    const sut = new SignUpController()
+    const requestHttp = {
+      body: {
+        name: 'any_name',
+        email: 'any_email@mail.com',
+        password: 'any_password',
+        passwordConfirmation: 'any_password',
+      },
+    }
+    const responseHttp = await sut.handle(requestHttp)
+    expect(responseHttp.statusCode).toBe(200)
+  })
+
   it('should return 400 if name is not provided', async () => {
     const sut = new SignUpController()
     const requestHttp = {
