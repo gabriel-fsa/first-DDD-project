@@ -10,6 +10,7 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    project: ['./tsconfig.json'],
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
@@ -18,9 +19,12 @@ module.exports = {
     'jest',
   ],
   rules: {
+    "@typescript-eslint/no-unused-vars":'warn',
+    "react/jsx-filename-extension": "off",
+    "@typescript-eslint/semi": ['error', 'never'],
+    semi: ['error', 'never'],
     'import/prefer-default-export': 'off',
     'class-methods-use-this': 'off',
-    semi: ['error', 'never'],
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',
