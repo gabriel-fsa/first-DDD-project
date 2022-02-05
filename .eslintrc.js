@@ -21,6 +21,7 @@ module.exports = {
   rules: {
     "@typescript-eslint/no-unused-vars":'warn',
     "react/jsx-filename-extension": "off",
+    "@typescript-eslint/return-await": "off",
     "@typescript-eslint/semi": ['error', 'never'],
     semi: ['error', 'never'],
     'import/prefer-default-export': 'off',
