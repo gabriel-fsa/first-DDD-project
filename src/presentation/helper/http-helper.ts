@@ -1,9 +1,9 @@
 import { ServerError } from '../errors'
 import { HttpResponse } from '../protocols'
 
-export const ok = (msgBody: string): HttpResponse => ({
+export const ok = (body?: any): HttpResponse => ({
   statusCode: 200,
-  body: msgBody,
+  body,
 })
 
 export const badRequest = (error: Error): HttpResponse => ({
