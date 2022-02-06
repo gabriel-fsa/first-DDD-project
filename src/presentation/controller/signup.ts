@@ -1,3 +1,4 @@
+import { AddAccount } from '../../domain/use-cases/add-account'
 import { InvalidParamError, MissingParamError } from '../errors'
 import { badRequest, ok, serverError } from '../helper'
 import {
@@ -5,7 +6,11 @@ import {
 } from '../protocols'
 
 export class SignUpController implements Controller {
-  constructor(private readonly emailValidator: EmailValidator) {}
+  constructor(
+    private readonly emailValidator: EmailValidator,
+    private readonly addAccount: AddAccount
+    ,
+  ) {}
 
   async handle(request:HttpRequest): Promise<HttpResponse> {
     try {
@@ -16,7 +21,9 @@ export class SignUpController implements Controller {
           return Promise.resolve(badRequest(new MissingParamError(param)))
         }
       }
-      const { email, password, passwordConfirmation } = request.body
+      const {
+        name, email, password, passwordConfirmation,
+      } = request.body
       const isPasswordsDifferents = password !== passwordConfirmation
       if (isPasswordsDifferents) {
         return Promise.resolve(badRequest(new InvalidParamError('password and passwordConfirmation is diferent')))
@@ -25,6 +32,7 @@ export class SignUpController implements Controller {
       if (!isValid) {
         return Promise.resolve(badRequest(new InvalidParamError('email')))
       }
+      this.addAccount.add({ name, email, password })
       return await Promise.resolve(ok('No errors'))
     } catch (err) {
       return Promise.resolve(serverError())
