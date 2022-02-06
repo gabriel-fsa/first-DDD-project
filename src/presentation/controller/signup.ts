@@ -32,8 +32,8 @@ export class SignUpController implements Controller {
       if (!isValid) {
         return Promise.resolve(badRequest(new InvalidParamError('email')))
       }
-      this.addAccount.add({ name, email, password })
-      return await Promise.resolve(ok('No errors'))
+      const account = this.addAccount.add({ name, email, password })
+      return await Promise.resolve(ok(account))
     } catch (err) {
       return Promise.resolve(serverError())
     }
