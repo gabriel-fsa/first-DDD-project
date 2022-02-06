@@ -41,20 +41,6 @@ const makeSut = (): TypeSut => {
 }
 
 describe('signup Controller', () => {
-  it('should return 200 all data is provided', async () => {
-    const { sut } = makeSut()
-    const requestHttp = {
-      body: {
-        name: 'any_name',
-        email: 'any_email@mail.com',
-        password: 'any_password',
-        passwordConfirmation: 'any_password',
-      },
-    }
-    const responseHttp = await sut.handle(requestHttp)
-    expect(responseHttp.statusCode).toBe(200)
-  })
-
   it('should return 400 if name is not provided', async () => {
     const { sut } = makeSut()
     const requestHttp = {
@@ -210,5 +196,25 @@ describe('signup Controller', () => {
     const response = await sut.handle(requestHttp)
     expect(response.body).toEqual(new ServerError())
     expect(response.statusCode).toBe(500)
+  })
+
+  it('should return 200 valid data is provided', async () => {
+    const { sut } = makeSut()
+    const requestHttp = {
+      body: {
+        name: 'valid_name',
+        email: 'valid_email@mail.com',
+        password: 'valid_password',
+        passwordConfirmation: 'valid_password',
+      },
+    }
+    const responseHttp = await sut.handle(requestHttp)
+    expect(responseHttp.statusCode).toBe(200)
+    expect(responseHttp.body).toEqual({
+      id: 'valid_id',
+      name: 'valid_name',
+      email: 'valid_email@mail.com',
+      password: 'valid_password',
+    })
   })
 })
